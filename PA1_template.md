@@ -1,10 +1,4 @@
----
-title: 'Reproducible Research: Peer Assessment 1'
-output:
-  html_document:
-    keep_md: yes
-  pdf_document: default
----
+# Reproducible Research: Peer Assessment 1
 
 
 ## Loading and preprocessing the data
@@ -70,7 +64,7 @@ p <- p + xlab("Total Steps per Day")
 print(p)
 ```
 
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png) 
+![](./PA1_template_files/figure-html/unnamed-chunk-3-1.png) 
 
 2.  Calculate and report the mean and median total number of steps taken per day
 
@@ -110,7 +104,7 @@ p <- p + xlab("5-minute interval")
 print(p)
 ```
 
-![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png) 
+![](./PA1_template_files/figure-html/unnamed-chunk-5-1.png) 
 
 2. Which 5-minute interval, on average across all the days in the dataset, contains the
    maximum number of steps?
@@ -173,7 +167,7 @@ p <- p + xlab("Total Steps per Day")
 print(p)
 ```
 
-![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9-1.png) 
+![](./PA1_template_files/figure-html/unnamed-chunk-9-1.png) 
 
 ```r
 mean(activityByDay$sumsteps)
@@ -220,4 +214,4 @@ p <- p + xlab("5-minute interval")
 print(p)
 ```
 
-![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11-1.png) 
+![](./PA1_template_files/figure-html/unnamed-chunk-11-1.png) 
