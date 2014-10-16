@@ -1,8 +1,9 @@
 ---
-title: "Reproducible Research: Peer Assessment 1"
-output: 
+title: 'Reproducible Research: Peer Assessment 1'
+output:
   html_document:
-    keep_md: true
+    keep_md: yes
+  pdf_document: default
 ---
 
 
@@ -62,7 +63,7 @@ p <- p + geom_vline(aes(xintercept=median(sumsteps, na.rm=T)),
 p <- p + annotate("text", x = 7800, y = 10, color = "red", label = "Mean")
 p <- p + annotate("text", x = 12200, y = 10, color = "blue", label = "Median")
 p <- p + ggtitle(" Histogram of Total steps by days")
-
+p <- p + xlab("Total Steps per Day")
 print(p)
 ```
 
@@ -87,6 +88,7 @@ timebreaks <- c("00:00", "04:00", "08:00", "12:00", "16:00", "20:00")
 p <- ggplot(data=activityByInt, aes(x=time, y=avg, group = 1)) + geom_line()
 p <- p + ylab("Average Steps Taken" ) + scale_x_discrete(breaks = timebreaks)
 p <- p + ggtitle("Average Daily Activity Pattern")
+p <- p + xlab("5-minute interval")
 print(p)
 ```
 
@@ -112,8 +114,8 @@ nrow(activity[is.na(activity$steps),])
    missing data filled in.
    
 ```{r}
-fact <- activity
-fact <- ddply(fact, "time", mutate, steps = replace(steps, is.na(steps),
+
+fact <- ddply(activity, "time", mutate, steps = replace(steps, is.na(steps),
                                                     mean(steps, na.rm=TRUE)))
 ```
 
@@ -135,7 +137,7 @@ p <- p + geom_vline(aes(xintercept=median(sumsteps, na.rm=T)),
 p <-p + annotate("text", x = 8300, y = 10, color = "red", label = "Mean")
 p <-p + annotate("text", x = 12500, y = 10, color = "blue", label = "Median")
 p <- p + ggtitle(" Histogram of Total steps by days - (Filled-in missing values)")
-
+p <- p + xlab("Total Steps per Day")
 print(p)
 
 mean(activityByDay$sumsteps)
@@ -166,6 +168,7 @@ activityByTyp <-ddply(fact, c("dayType", "time"), summarize,
 p <- ggplot(data=activityByTyp, aes(x=time, y=avg, group = 1)) + geom_line()
 p <- p + facet_wrap( ~ dayType, ncol = 1)
 p <- p + ylab("Average Steps Taken" ) + scale_x_discrete(breaks = timebreaks)
-p <- p + ggtitle("Average Daily Activity Pattern")
+p <- p + ggtitle("Weekdays and Weekends Activity Pattern")
+p <- p + xlab("5-minute interval")
 print(p)
 ```
